@@ -14,9 +14,9 @@ int main()
     {
         int temp;
         std::cin >> temp;
-        if(temp % 2)  // If even assign 1
+        if(temp % 2)  // If odd assign 1
             vec[i] = 1;
-        else          // If odd assign -1
+        else          // If even assign -1
             vec[i] = -1;
     }
     memo.insert(std::pair<int, long long>(0, 1));
@@ -27,7 +27,7 @@ int main()
             vec[i] += vec[i - 1]; // Sum till ith index
         if(memo.find(vec[i]) == memo.end()) // If that sum is not seen before
             memo.insert(std::pair<int, long long>(vec[i], 1));
-        else
+        else // If same sum is seen again that means number of intervals between these indices have sum of 0.
         {
             res += memo[vec[i]];
             ++memo[vec[i]];
